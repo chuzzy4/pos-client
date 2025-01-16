@@ -135,7 +135,7 @@ const Analytics: React.FC = () => {
         >
           <h2 style={{ textAlign: "center" }}>Total Sales</h2>
           <p style={{ textAlign: "center", fontSize: "1.5rem" }}>
-            ${data?.totalSales.toFixed(2)}
+            ₦{data?.totalSales.toFixed(2)}
           </p>
         </div>
         <div

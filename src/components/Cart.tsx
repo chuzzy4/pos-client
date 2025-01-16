@@ -65,7 +65,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     {item.name}
                   </h3>
                   <p className="text-sm text-gray-500">
-                    Unit Price: ${item.price}
+                    Unit Price: ₦{item.price}
                   </p>
 
                   <div className="flex items-center gap-2 mt-2">
@@ -89,7 +89,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </div>
               <div className="flex flex-col items-end">
                 <p className="text-lg font-bold text-gray-800">
-                  ${item.price * item.quantity}
+                  ₦{item.price * item.quantity}
                 </p>
                 <button
                   onClick={() => removeItem(item._id)}
@@ -125,7 +125,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           <div className="flex justify-between items-center mb-3">
             <p className="text-lg font-semibold text-gray-700">Total</p>
             <p className="text-xl font-bold text-green-500 flex gap-1">
-              <span className="text-gray-700 font-medium"> $</span>
+              <span className="text-gray-700 font-medium"> ₦</span>
               {calculateSubtotal()}
             </p>
           </div>

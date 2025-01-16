@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       toast.success(response.data.message);
       setIsRestocking(false);
       setIsRestockModalOpen(false); // Close the restock modal after successful restock
-      // window.location.reload(); // Refresh the page after successful restock
+      window.location.reload(); // Refresh the page after successful restock
     } catch (error) {
       console.error("Error restocking product:", error);
       toast.error("Failed to restock product.");
@@ -78,7 +78,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         className="w-full h-32 object-cover rounded-xl bg-white"
       />
       <h3 className="text-lg font-bold mt-2">{product.name}</h3>
-      <p className="text-yellow-500 font-bold">${product.price}</p>
+      <p className="text-yellow-500 font-bold">₦{product.price}</p>
       <p
         className={`${
           product.quantity > 0 ? "text-green-500" : "text-red-500"
