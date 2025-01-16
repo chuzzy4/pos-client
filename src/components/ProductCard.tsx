@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       toast.success(response.data.message);
       setIsRestocking(false);
       setIsRestockModalOpen(false); // Close the restock modal after successful restock
-      window.location.reload(); // Refresh the page after successful restock
+      // window.location.reload(); // Refresh the page after successful restock
     } catch (error) {
       console.error("Error restocking product:", error);
       toast.error("Failed to restock product.");
@@ -89,17 +89,6 @@ const ProductCard = ({ product }: { product: Product }) => {
           : "Out of Stock"}
       </p>
 
-      {/* <button
-        className={`bg-yellow-500 text-white px-4 py-2 rounded-md mt-2 transition-all duration-300 ${
-          product.quantity > 0
-            ? "hover:bg-yellow-600"
-            : "bg-gray-300 cursor-not-allowed"
-        }`}
-        onClick={handleAddToCart}
-        disabled={product.quantity <= 0}
-      >
-        {product.quantity > 0 ? "Add to Cart" : "Unavailable"}
-      </button> */}
       <button
         className={` text-white px-4 py-2 rounded-md mt-2 transition-all duration-300 ${
           product.quantity > 0
@@ -124,22 +113,6 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       {/* Conditional render of Restock and Delete buttons */}
       {showActions && (
-        // <div className="absolute top-10 right-2 flex space-x-2 flex flex-col space-y-3 bg-white p-5 shadow-xl rounded-xl">
-        //   <button
-        //     className="bg-blue-500 text-white px-2 py-1 rounded-xl hover:bg-blue-600 transform hover:scale-105 duration-300 transition-all"
-        //     onClick={() => setIsRestockModalOpen(true)} // Open restock modal
-        //     disabled={isRestocking}
-        //   >
-        //     {isRestocking ? "Restocking..." : "Restock"}
-        //   </button>
-        //   <button
-        //     className="bg-red-500 text-white px-2 py-1 rounded-xl transform hover:scale-105 duration-300 transition-all hover:bg-red-600"
-        //     onClick={() => setIsDeleteModalOpen(true)} // Open delete confirmation modal
-        //   >
-        //     Delete
-        //   </button>
-        // </div>
-
         <div className="absolute top-10 right-2 flex flex-col space-y-4 bg-white p-4 shadow-lg rounded-lg">
           {/* Restock Button */}
           <button
@@ -163,28 +136,49 @@ const ProductCard = ({ product }: { product: Product }) => {
       )}
 
       {/* Modal for delete confirmation */}
+
       <Modal
         isOpen={isDeleteModalOpen}
         onRequestClose={() => setIsDeleteModalOpen(false)}
         contentLabel="Delete Confirmation"
-        className="modal-content"
-        overlayClassName="modal-overlay"
+        className="bg-white rounded-xl shadow-2xl max-w-md mx-auto p-8 relative transition-transform transform scale-100 font-josefin mx-5"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center"
       >
-        <h3 className="text-lg font-light font-josefin ">
-          Are you sure you want to delete {product.name} ?
-        </h3>
-        <div className="mt-4 flex justify-around">
+        {/* Modal Header */}
+        <div className="flex items-center justify-between border-b pb-4">
+          <h3 className="text-xl font-bold text-gray-900">
+            Delete Confirmation
+          </h3>
           <button
-            className="bg-red-500 text-white px-4 py-2 rounded-md"
-            onClick={handleDelete}
+            className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            onClick={() => setIsDeleteModalOpen(false)}
           >
-            Yes, Delete
+            ✕
           </button>
+        </div>
+
+        {/* Modal Body */}
+        <div className="mt-6">
+          <p className="text-sm  text-gray-600">
+            Are you sure you want to delete{" "}
+            <span className="font-medium text-gray-900">{product.name}</span>?
+            This action cannot be undone and may affect related data.
+          </p>
+        </div>
+
+        {/* Modal Footer */}
+        <div className="mt-8 flex justify-end space-x-4">
           <button
-            className="bg-gray-500 text-white px-4 py-2 rounded-md"
+            className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
             onClick={() => setIsDeleteModalOpen(false)}
           >
             Cancel
+          </button>
+          <button
+            className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+            onClick={handleDelete}
+          >
+            Yes, Delete
           </button>
         </div>
       </Modal>
