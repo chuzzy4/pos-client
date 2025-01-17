@@ -127,6 +127,9 @@ const FormPage = () => {
                 <option value="Cigarettes">Cigarettes</option>
                 <option value="Insecticides"> Insecticides </option>
                 <option value="Drinks"> Drinks </option>
+                <option value="Cereals"> Cereals </option>
+                <option value="Snacks"> Snacks </option>
+                <option value="Others"> Others </option>
               </select>
             </div>
             <button
