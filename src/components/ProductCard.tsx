@@ -233,7 +233,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Modal Body */}
         <div className="mt-6">
-          <p className="text-sm  text-gray-600">
+          <p className="text-lg  text-gray-600">
             Are you sure you want to delete{" "}
             <span className="font-medium text-gray-900">{product.name}</span>?
             This action cannot be undone and may affect related data.

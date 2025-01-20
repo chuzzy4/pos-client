@@ -245,3 +245,11 @@ header {
   top: 0;
   z-index: 50;
 }
+/* Add this to your CSS or Tailwind config */
+tr:nth-child(even) {
+  background-color: #f9fafb; /* Light gray */
+}
+/* Add this to your CSS or Tailwind config */
+.receipt {
+  font-family: "Courier New", Courier, monospace;
+}
