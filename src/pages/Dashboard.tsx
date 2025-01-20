@@ -88,7 +88,9 @@ const Dashboard = () => {
       )}
       <h2 className="text-xl font-bold mt-8">All Products</h2>
       {loading ? (
-        <p>Loading...</p>
+        <div className="h-40 flex justify-center items-center">
+          <div className="loader"></div>
+        </div>
       ) : filteredProducts.length > 0 ? (
         // <div className="grid grid-cols-4 gap-4 mt-4">
         //   {filteredProducts.map(product => (

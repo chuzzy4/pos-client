@@ -74,7 +74,7 @@ import { Link, useNavigate } from "react-router-dom";
 import apiClient from "../utils/apiClient";
 import { AxiosError } from "axios";
 import ssg from "../assets/images/sss.jpg"; // Import your image
-import bh from "../assets/images/lgh.png";
+import bh from "../assets/images/es.png";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -155,7 +155,7 @@ const Login: React.FC = () => {
           </form>
           <p className="text-center text-gray-600">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-500 hover:underline">
+            <Link to="/#" className="text-blue-500 hover:underline">
               Sign Up
             </Link>
           </p>

@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import apiClient from "../utils/apiClient";
 import sdd from "../assets/images/sss.jpg";
+import lg from "../assets/images/es.png";
 
 const FormPage = () => {
   const [productName, setProductName] = useState<string>("");
@@ -60,9 +61,13 @@ const FormPage = () => {
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-2xl overflow-hidden w-full max-w-4xl">
         {/* Left Form Section */}
         <div className="w-full md:w-1/2 p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6">
+          {/* <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6">
             New Product
-          </h2>
+          </h2> */}
+          <div className="flex justify-center items-center  mb-8">
+            {" "}
+            <img src={lg} alt="" className="h-10 objct-cover" />
+          </div>
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <label className="block text-gray-700 font-medium">

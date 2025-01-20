@@ -39,7 +39,17 @@ const App = () => {
   };
   return (
     <div className="flex font-josefin">
-      <ToastContainer hideProgressBar={true} />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000} // Close toast after 3 seconds
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       {!isAuthRoute && <Sidebar />}
       <div className={`flex-1 ${isAuthRoute ? "" : ""}`}>

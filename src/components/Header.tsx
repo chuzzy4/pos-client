@@ -54,7 +54,8 @@ import { GoGraph } from "react-icons/go";
 import { MdOutlineInventory } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import Cart from "./Cart";
-import { jwtDecode } from "jwt-decode"; // Import jwtDecode correctly
+import { jwtDecode } from "jwt-decode";
+import lg from "../assets/images/em.png";
 
 interface User {
   username: string;
@@ -111,17 +112,22 @@ const Header: React.FC = () => {
   return (
     <header className="bg-gray-800 text-white flex justify-between items-center px-4 py-4 sticky top-0 z-50">
       <h4 className="text-xl font-black uppercase">
-        {user?.username ?? "Menu"}
+        {/* {user?.username ?? "Menu"} */}
+        <img src={lg} alt="" className="object-cover h-10" />
       </h4>
       <button
         className="md:hidden text-2xl"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        {isMobileMenuOpen ? <FaTimes /> : <GiHamburgerMenu />}
+        {isMobileMenuOpen ? (
+          <FaTimes className="text-red-500 text-3xl" />
+        ) : (
+          <GiHamburgerMenu className="text-4xl" />
+        )}
       </button>
 
       {isMobileMenuOpen && (
-        <nav className="absolute top-16 left-0 w-ful   bg-gray-700 p-4 z-40">
+        <nav className="absolute top-16 left-0 w-ful   bg-gray-800 p-4 z-40 font-lato">
           <ul className="space-y-4">
             {links.map(link => (
               <li key={link.name} onClick={() => setIsMobileMenuOpen(false)}>
@@ -130,7 +136,7 @@ const Header: React.FC = () => {
                   className="flex items-center gap-2 text-lg hover:bg-gray-600 p-2 rounded-md"
                 >
                   {link.icon}
-                  <span className="mt-1">{link.name}</span>
+                  <span>{link.name}</span>
                 </Link>
               </li>
             ))}

@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { CiMenuKebab } from "react-icons/ci";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 interface Product {
   _id: number;
@@ -25,13 +26,19 @@ const ProductCard = ({ product }: { product: Product }) => {
   const [restockQuantity, setRestockQuantity] = useState<number | string>(""); // State for restock quantity input
   const [isRestocking, setIsRestocking] = useState(false); // Track restocking state
 
+  const [isEditPriceModalOpen, setIsEditPriceModalOpen] = useState(false); // State for price edit modal
+  const [newPrice, setNewPrice] = useState<number | string>(product.price); // State for the new price
+  const [isUpdatingPrice, setIsUpdatingPrice] = useState(false); // Track updating state
+
   const handleAddToCart = () => {
     if (product.quantity > 0) {
       const cartItem = { ...product, quantity: 1 };
       addToCart(cartItem);
+      toast.success(`${product.name} added to cart!`); // Success toast
+    } else {
+      toast.error(`${product.name} is out of stock!`); // Error toast
     }
   };
-
   const handleRestock = async () => {
     if (
       restockQuantity === "" ||
@@ -67,6 +74,31 @@ const ProductCard = ({ product }: { product: Product }) => {
     } catch (error) {
       console.error("Error deleting product:", error);
       toast.error("Failed to delete product.");
+    }
+  };
+
+  const handleUpdatePrice = async () => {
+    if (!newPrice || isNaN(Number(newPrice)) || Number(newPrice) <= 0) {
+      toast.error("Please enter a valid price!");
+      return;
+    }
+
+    try {
+      setIsUpdatingPrice(true);
+      const response = await apiClient.put(
+        `/products/update-price/${product._id}`,
+        {
+          price: Number(newPrice),
+        }
+      );
+      toast.success(response.data.message);
+      setIsEditPriceModalOpen(false); // Close the modal
+      window.location.reload(); // Refresh the page after successful update
+    } catch (error) {
+      console.error("Error updating price:", error);
+      toast.error("Failed to update price.");
+    } finally {
+      setIsUpdatingPrice(false);
     }
   };
 
@@ -113,14 +145,15 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       {/* Conditional render of Restock and Delete buttons */}
       {showActions && (
-        <div className="absolute top-10 right-2 flex flex-col space-y-4 bg-white p-4 shadow-lg rounded-lg">
+        <div className="absolute top-10 right-2 flex flex-col space-y-4 bg-white p-4 shadow-lg rounded-lg font-lato">
           {/* Restock Button */}
           <button
             className="flex items-center space-x-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 hover:shadow-lg transform hover:scale-105 duration-300"
             onClick={() => setIsRestockModalOpen(true)} // Open restock modal
             disabled={isRestocking}
           >
-            <FaEdit className="w-5 h-5" />
+            <BsFillPlusSquareFill className="w-5 h-5" />
+
             <span>{isRestocking ? "Restocking..." : "Restock"}</span>
           </button>
 
@@ -132,9 +165,50 @@ const ProductCard = ({ product }: { product: Product }) => {
             <FaTrash className="w-5 h-5" />
             <span>Delete</span>
           </button>
+
+          {/* Edit Price Button */}
+          <button
+            className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 hover:shadow-lg transform hover:scale-105 duration-300"
+            onClick={() => setIsEditPriceModalOpen(true)} // Open edit price modal
+          >
+            <FaEdit className="w-5 h-5" />
+            <span>Edit Price</span>
+          </button>
         </div>
       )}
-
+      {/* Edit Price Modal */}
+      <Modal
+        isOpen={isEditPriceModalOpen}
+        onRequestClose={() => setIsEditPriceModalOpen(false)}
+        className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto mt-20"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+      >
+        <h2 className="text-xl font-bold mb-4">Edit Price</h2>
+        <input
+          type="number"
+          value={newPrice}
+          onChange={e => setNewPrice(e.target.value)}
+          className="border p-2 w-full rounded-lg mb-4"
+          placeholder="Enter new price"
+        />
+        <div className="flex justify-end space-x-2">
+          <button
+            onClick={() => setIsEditPriceModalOpen(false)}
+            className="px-4 py-2 bg-gray-300 rounded-lg"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleUpdatePrice}
+            disabled={isUpdatingPrice}
+            className={`px-4 py-2 rounded-lg text-white ${
+              isUpdatingPrice ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+            }`}
+          >
+            {isUpdatingPrice ? "Updating..." : "Update Price"}
+          </button>
+        </div>
+      </Modal>
       {/* Modal for delete confirmation */}
 
       <Modal

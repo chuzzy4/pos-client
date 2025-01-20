@@ -34,7 +34,10 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     >
       {/* Cart Header */}
       <div className="p-5 flex justify-between items-center border-b bg-gray-100">
-        <h2 className="text-2xl font-bold text-gray-800">Your Cart</h2>
+        <h2 className="text-2xl font-bold text-gray-800">
+          Your Cart{" "}
+          <span className="text-blue-500">({getTotalQuantity()})</span>
+        </h2>
         <button
           onClick={onClose}
           className="text-gray-500 hover:text-red-500 transition-colors"
@@ -75,7 +78,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     >
                       -
                     </button>
-                    <span className="text-lg font-semibold">
+                    <span className="text-lg font-semibold text-black">
                       {item.quantity}
                     </span>
                     <button
@@ -116,12 +119,13 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       {/* Cart Footer */}
       {cartItems.length > 0 && (
         <div className="p-5 border-t bg-gray-100">
-          <div className="flex justify-between items-center mb-3">
-            <p>Items</p>
+          {/* <div className="flex justify-between items-center mb-3 ">
+            <p className="text-lg font-semibold text-gray-700">Items</p>
             <span className="text-blue-500 flex gap-1">
-              <p className="text-gray-700">QTY</p> ({getTotalQuantity()})
+              <p className="text-gray-700 font-medium font-lato ">qty</p>
+              <p className="mt-1"> ({getTotalQuantity()})</p>
             </span>
-          </div>
+          </div> */}
           <div className="flex justify-between items-center mb-3">
             <p className="text-lg font-semibold text-gray-700">Total</p>
             <p className="text-xl font-bold text-green-500 flex gap-1">
@@ -129,16 +133,16 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               {calculateSubtotal()}
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 md:flex-row flex-col">
             <button
               onClick={clearCart}
-              className="w-1/2 bg-red-500 text-white py-2 rounded-md text-sm font-medium hover:bg-red-800 transition-colors"
+              className="md:w-1/2 w-full bg-red-500 text-white py-2 rounded-md text-md font-medium hover:bg-red-600 transition-colors"
             >
               Clear Cart
             </button>
             <button
               onClick={handleCheckout}
-              className="w-1/2 bg-green-500 text-white py-2 rounded-md text-sm font-medium hover:bg-green-600 transition-colors"
+              className="md:w-1/2 w-full bg-green-500 text-white py-2 rounded-md text-md font-medium hover:bg-green-600 transition-colors"
             >
               Checkout
             </button>
