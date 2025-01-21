@@ -46,7 +46,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaUser } from "react-icons/fa";
 import { AiOutlineForm } from "react-icons/ai";
 import { BsBoxSeamFill } from "react-icons/bs";
 import { HiHome } from "react-icons/hi2";
@@ -93,11 +93,6 @@ const Header: React.FC = () => {
       icon: <BsBoxSeamFill className="text-yellow-500" />,
     },
     {
-      name: "New Items",
-      path: "/form",
-      icon: <AiOutlineForm className="text-orange-500" />,
-    },
-    {
       name: "Analytics",
       path: "/analytics",
       icon: <GoGraph className="text-green-500" />,
@@ -106,6 +101,11 @@ const Header: React.FC = () => {
       name: "Inventory",
       path: "/inventory",
       icon: <MdOutlineInventory className="text-blue-500" />,
+    },
+    {
+      name: "New Items",
+      path: "/form",
+      icon: <AiOutlineForm className="text-orange-500" />,
     },
   ];
 
@@ -122,13 +122,13 @@ const Header: React.FC = () => {
         {isMobileMenuOpen ? (
           <FaTimes className="text-red-500 text-3xl" />
         ) : (
-          <GiHamburgerMenu className="text-4xl" />
+          <GiHamburgerMenu className="text-3xl" />
         )}
       </button>
 
       {isMobileMenuOpen && (
-        <nav className="absolute top-16 left-0 w-ful   bg-gray-800 p-4 z-40 font-lato">
-          <ul className="space-y-4">
+        <nav className="absolute top-16 left-0 w-1/2 h-screen  bg-gray-800 p-4 z-40 font-lato">
+          <ul className="space-y-8">
             {links.map(link => (
               <li key={link.name} onClick={() => setIsMobileMenuOpen(false)}>
                 <Link

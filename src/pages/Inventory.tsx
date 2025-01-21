@@ -262,6 +262,7 @@ import { useState, useEffect } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import apiClient from "../utils/apiClient";
+import ey from "../assets/images/ey.png";
 
 const Inventory = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -298,7 +299,7 @@ const Inventory = () => {
     const doc = new jsPDF();
 
     // Logo
-    const logoUrl = "/fg.jpeg"; // Replace with your logo path
+    const logoUrl = ey; // Replace with your logo path
     const imgWidth = 30; // Desired width in mm
     const imgHeight = imgWidth / 2; // Maintain aspect ratio (2:1 example)
 
@@ -347,7 +348,7 @@ const Inventory = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-gray-100 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gra-100 min-h-screen ">
       <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 max-w-4xl mx-auto">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
           Inventory Report
@@ -379,9 +380,9 @@ const Inventory = () => {
 
         <div className="mt-8">
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-4">
-            Products:
+            Products
           </h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-hidden overflow-hidden">
             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
               <thead className="bg-blue-600 text-white">
                 <tr>

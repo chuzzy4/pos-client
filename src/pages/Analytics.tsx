@@ -110,7 +110,7 @@ const Analytics: React.FC = () => {
     <div className="analytics-container" style={{ padding: "2rem" }}>
       <h1
         style={{ textAlign: "center", marginBottom: "2rem" }}
-        className="text-3xl text-gray-600"
+        className="text-2xl text-blue-500"
       >
         Analytics Dashboard
       </h1>
