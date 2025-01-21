@@ -46,7 +46,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaTimes, FaUser } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { AiOutlineForm } from "react-icons/ai";
 import { BsBoxSeamFill } from "react-icons/bs";
 import { HiHome } from "react-icons/hi2";
