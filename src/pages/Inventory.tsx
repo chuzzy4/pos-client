@@ -350,12 +350,12 @@ const Inventory = () => {
   return (
     <div className="p-4 sm:p-6 bg-gra-100 min-h-screen ">
       <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+        <h1 className="text-2xl text-blue-500 font-nouvelr mb-4">
           Inventory Report
         </h1>
 
         <div className="mb-6">
-          <label className="block font-medium text-gray-700 mb-2">
+          <label className="block font-medium text-gray-700 mb-2 font-nouvelr">
             Select Category:
           </label>
           <select
@@ -379,7 +379,7 @@ const Inventory = () => {
         </button>
 
         <div className="mt-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-4 font-nouvelr">
             Products
           </h2>
           <div className="overflow-x-hidden overflow-hidden">

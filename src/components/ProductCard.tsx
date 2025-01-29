@@ -109,7 +109,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         alt={product.name}
         className="w-full h-32 object-cover rounded-xl bg-white"
       />
-      <h3 className="text-lg font-bold mt-2">{product.name}</h3>
+      <h3 className="text-lg font-bold mt-2 font-nouvelr">{product.name}</h3>
       <p className="text-yellow-500 font-bold">₦{product.price}</p>
       <p
         className={`${
@@ -220,7 +220,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between border-b pb-4">
-          <h3 className="text-xl font-bold text-gray-900">
+          <h3 className="text-xl font-bold text-gray-900 font-nouvelr">
             Delete Confirmation
           </h3>
           <button
@@ -233,7 +233,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Modal Body */}
         <div className="mt-6">
-          <p className="text-lg  text-gray-600">
+          <p className="text-lg  text-gray-600 font-lato">
             Are you sure you want to delete{" "}
             <span className="font-medium text-gray-900">{product.name}</span>?
             This action cannot be undone and may affect related data.
@@ -241,7 +241,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         {/* Modal Footer */}
-        <div className="mt-8 flex justify-end space-x-4">
+        <div className="mt-8 flex justify-end space-x-4 font-nouvelr">
           <button
             className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
             onClick={() => setIsDeleteModalOpen(false)}

@@ -65,7 +65,7 @@ const Dashboard = () => {
         totalProducts={products.length}
         totalCategories={categories.length}
       />
-      <h2 className="text-xl font-bold mt-8 py-2">Categories</h2>
+      <h2 className="text-xl font-bold mt-8 py-2 font-nouvelr">Categories</h2>
       {categories.length > 0 ? (
         <CategoryChips
           categories={categories}
@@ -86,7 +86,7 @@ const Dashboard = () => {
           </p>
         </div>
       )}
-      <h2 className="text-xl font-bold mt-8">All Products</h2>
+      <h2 className="text-xl font-bold mt-8 font-nouvelr">All Products</h2>
       {loading ? (
         <div className="h-40 flex justify-center items-center">
           <div className="loader"></div>

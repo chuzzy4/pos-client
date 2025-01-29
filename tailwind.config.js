@@ -8,6 +8,8 @@ export default {
         sans: ["Roboto", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         josefin: ["Josefin Sans", "sans-serif"],
+        nouvelr: ["NouvelR", "sans-serif"],
+        aeonik: ["Aeonik", "sans-serif"],
       },
     },
   },

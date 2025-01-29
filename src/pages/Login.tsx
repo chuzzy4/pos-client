@@ -119,7 +119,7 @@ const Login: React.FC = () => {
           <div className="flex justify-center ">
             <img src={bh} alt="" className="h-10" />
           </div>
-          <h2 className="text-4xl font-extrabold text-gray-800 text-center">
+          <h2 className="text-3xl font-extrabold text-gray-800 text-center font-nouvelr">
             Welcome Back!
           </h2>
           <p className="text-gray-600 text-center mb-6">

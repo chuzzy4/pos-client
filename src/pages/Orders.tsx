@@ -627,13 +627,13 @@ const Orders = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen shadow-xl">
-      <h1 className="md:text-xl text-lg font-bold mb-6 uppercase text-blue-500">
+      <h1 className="md:text-2xl text-lg font-bold mb-6 text-blue-500 font-nouvelr">
         Order History
       </h1>
 
       {/* Improved Search and Filter Layout */}
-      <div className="mb-6 bg-white p-6 rounded-lg shadow-md">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mb-6 bg-white p-6 rounded-lg shadow-md font-nouvelr">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Search by Order ID
@@ -643,7 +643,7 @@ const Orders = () => {
               placeholder="Enter order ID"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full border p-2 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -654,19 +654,20 @@ const Orders = () => {
               type="date"
               value={dateFilter}
               onChange={e => setDateFilter(e.target.value)}
-              className="w-full border p-2 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-md focus:ring-2 focus:outline-none focus:ring-blue-500"
             />
           </div>
-          <div className="flex flex-col 2xl:flex-row items-end gap-2">
+
+          <div className="flex  flex-col md:flex-row items-end   gap-2">
             <button
               onClick={calculateTotalSales}
-              className="w-full md:w-auto bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+              className="w-full  bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
             >
               Calculate Total Sales
             </button>
             <button
               onClick={resetFilters}
-              className="w-full md:w-auto bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition"
+              className="w-full  bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition"
             >
               Reset Filters
             </button>
@@ -699,14 +700,16 @@ const Orders = () => {
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[40vh] overflow-y-auto">
           {filteredOrders.map(order => (
             <div
               key={order._id}
               className="border border-orange-400 rounded-md p-4 bg-white flex flex-col md:flex-row justify-between items-start md:items-center"
             >
               <div className="mb-4 md:mb-0">
-                <p className="font-bold text-lg">Order Id: #{order._id}</p>
+                <p className="font-bold text-lg font-nouvelr">
+                  Order Id: #{order._id}
+                </p>
                 <p className="text-gray-600">Sold: {order.products.length}</p>
                 <p className="text-gray-500">
                   Date: {format(new Date(order.createdAt), "MMM dd, yyyy")}

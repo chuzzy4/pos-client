@@ -50,10 +50,10 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white h-screen hidden md:flex flex-col justify-between p-4 sticky top-0 z-50">
+      <aside className="w-64 bg-gray-800 text-white h-screen hidden md:flex flex-col justify-between p-4 sticky top-0 z-50 font-nouvelr">
         {/* Navigation Links */}
         <nav>
-          <ul className="space-y-4 mt-10">
+          <ul className="space-y-8 mt-10">
             {links.map(link => (
               <li key={link.name} onClick={closeCart}>
                 <Link
@@ -61,7 +61,7 @@ const Sidebar = () => {
                   className="flex items-center gap-2 text-lg hover:bg-gray-700 p-2 rounded-md"
                 >
                   <span>{link.icon}</span>
-                  <span className="mt-1"> {link.name}</span>
+                  <span> {link.name}</span>
                 </Link>
               </li>
             ))}
