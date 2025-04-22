@@ -2,6 +2,7 @@ import { FiX } from "react-icons/fi";
 import { BsCartX } from "react-icons/bs";
 import { useCart } from "../hooks/CartContext";
 import { useNavigate } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
 
 interface CartProps {
   isOpen: boolean;
@@ -49,7 +50,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       {/* Cart Items */}
       <div className="p-5 space-y-4 h-[55%] overflow-y-auto">
         {cartItems.length > 0 ? (
-          cartItems.map(item => (
+          cartItems.map((item) => (
             <div
               key={item._id}
               className="flex items-center justify-between gap-4 border rounded-md p-4 shadow-sm hover:shadow-md transition-shadow"
@@ -64,10 +65,10 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-sm font-semibold text-gray-800 font-nouvelr">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 font-aeonik">
                     Unit Price: ₦{item.price}
                   </p>
 
@@ -96,9 +97,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 </p>
                 <button
                   onClick={() => removeItem(item._id)}
-                  className="text-sm text-red-500 hover:underline"
+                  className="text-xl text-red-500 bg-red-100 rounded-full p-2 hover:bg-red-200"
                 >
-                  Remove
+                  <MdDelete />
                 </button>
               </div>
             </div>

@@ -1,48 +1,3 @@
-// import React from "react";
-// import { jwtDecode } from "jwt-decode";
-// import { GiHamburgerMenu } from "react-icons/gi";
-
-// interface User {
-//   username: string;
-//   email: string;
-// }
-
-// const Header: React.FC = () => {
-//   const token = localStorage.getItem("token");
-//   let user: User | null = null;
-
-//   // Decode the token if it exists
-//   if (token) {
-//     try {
-//       user = jwtDecode<User>(token);
-//       console.log("Decoded user:", user); // Log the decoded user object
-//     } catch (error) {
-//       console.error("Invalid token:", error);
-//     }
-//   }
-
-//   return (
-//     <header className="bg-gray-800 text-white flex justify-between items-center px-4 py-4 sticky top-0 z-50">
-//       <h4 className="text-xl font-black uppercase  "> {user?.username} </h4>
-//       <span className="md:hidden ">
-//         <GiHamburgerMenu className="text-3xl" />
-//       </span>
-//       {user ? (
-//         <div className="md:flex hidden items-center gap-4">
-//           <div className="bg-blue-600 w-10 h-10 pt-1 flex items-center justify-center text-white rounded-full text-lg">
-//             {user.username?.[0]?.toUpperCase()}
-//           </div>
-//           <span>{user.email}</span>
-//         </div>
-//       ) : (
-//         <span>Not logged in</span>
-//       )}
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -129,7 +84,7 @@ const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <nav className="absolute top-16 left-0 w-1/2 h-screen  bg-gray-800 p-4 z-40 font-lato">
           <ul className="space-y-8">
-            {links.map(link => (
+            {links.map((link) => (
               <li key={link.name} onClick={() => setIsMobileMenuOpen(false)}>
                 <Link
                   to={link.path}

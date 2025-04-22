@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdDelete } from "react-icons/md";
 // import img from "../assets/images.jpeg";
 
 const CartPage = () => {
@@ -22,8 +23,8 @@ const CartPage = () => {
   ]);
 
   const handleQuantityChange = (id: number, type: "increase" | "decrease") => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
         item.id === id
           ? {
               ...item,
@@ -38,7 +39,7 @@ const CartPage = () => {
   };
 
   const handleRemoveItem = (id: number) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const handleClearCart = () => {
@@ -69,7 +70,7 @@ const CartPage = () => {
         {/* Cart Items */}
         {cartItems.length > 0 ? (
           <div className="space-y-6">
-            {cartItems.map(item => (
+            {cartItems.map((item) => (
               <div
                 key={item.id}
                 className="flex items-center justify-between bg-gray-50 p-4 rounded-lg shadow-md"
@@ -114,7 +115,7 @@ const CartPage = () => {
                     onClick={() => handleRemoveItem(item.id)}
                     className="text-red-500 hover:text-red-700 text-sm font-semibold"
                   >
-                    Remove
+                    <MdDelete />
                   </button>
                 </div>
               </div>
