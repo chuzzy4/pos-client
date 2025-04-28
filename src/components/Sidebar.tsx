@@ -5,8 +5,9 @@ import Cart from "./Cart";
 import { AiOutlineForm } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
 import { MdOutlineInventory } from "react-icons/md";
-import { BsBoxSeamFill } from "react-icons/bs";
 import { HiHome } from "react-icons/hi2";
+import { PiShoppingCartFill } from "react-icons/pi";
+import { FaBox } from "react-icons/fa";
 
 const Sidebar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -17,7 +18,7 @@ const Sidebar = () => {
       path: "/",
       icon: (
         <span>
-          <HiHome />
+          <HiHome className="text-xl text-purple-500" />
         </span>
       ),
     },
@@ -26,7 +27,7 @@ const Sidebar = () => {
       path: "/orders",
       icon: (
         <span>
-          <BsBoxSeamFill className="text-yellow-500" />
+          <FaBox className="text-yellow-500" />
         </span>
       ),
     },
@@ -54,7 +55,7 @@ const Sidebar = () => {
         {/* Navigation Links */}
         <nav>
           <ul className="space-y-8 mt-10">
-            {links.map(link => (
+            {links.map((link) => (
               <li key={link.name} onClick={closeCart}>
                 <Link
                   to={link.path}
@@ -71,7 +72,9 @@ const Sidebar = () => {
                 onClick={toggleCart}
                 className="flex items-center gap-2 text-lg hover:bg-gray-700 p-2 rounded-md"
               >
-                <span>🛒</span>
+                <span>
+                  <PiShoppingCartFill className="text-xl text-pink-600" />
+                </span>
                 Cart
               </button>
             </li>

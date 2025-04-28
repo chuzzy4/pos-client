@@ -29,7 +29,7 @@ const CategoryChips = ({
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center gap-4 font-nouvelr">
         {/* Display First 4 Categories */}
         <div className="flex gap-3 items-center flex-wrap">
           {/* "All" Category */}

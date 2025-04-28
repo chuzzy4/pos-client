@@ -3,8 +3,8 @@ import { useState } from "react";
 import apiClient from "../utils/apiClient"; // Import your axios instance
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import { CiMenuKebab } from "react-icons/ci";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { CiEdit, CiMenuKebab } from "react-icons/ci";
+import { FaTrash } from "react-icons/fa";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 
 interface Product {
@@ -152,7 +152,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             onClick={() => setIsRestockModalOpen(true)} // Open restock modal
             disabled={isRestocking}
           >
-            <BsFillPlusSquareFill className="w-5 h-5" />
+            <BsFillPlusSquareFill className="w-5 h-4" />
 
             <span>{isRestocking ? "Restocking..." : "Restock"}</span>
           </button>
@@ -162,7 +162,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             className="flex items-center space-x-2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 hover:shadow-lg transform hover:scale-105 duration-300"
             onClick={() => setIsDeleteModalOpen(true)} // Open delete confirmation modal
           >
-            <FaTrash className="w-5 h-5" />
+            <FaTrash className="w-5 h-4" />
             <span>Delete</span>
           </button>
 
@@ -171,7 +171,8 @@ const ProductCard = ({ product }: { product: Product }) => {
             className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 hover:shadow-lg transform hover:scale-105 duration-300"
             onClick={() => setIsEditPriceModalOpen(true)} // Open edit price modal
           >
-            <FaEdit className="w-5 h-5" />
+            <CiEdit className="w-5 h-5" />
+
             <span>Edit Price</span>
           </button>
         </div>
@@ -187,7 +188,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <input
           type="number"
           value={newPrice}
-          onChange={e => setNewPrice(e.target.value)}
+          onChange={(e) => setNewPrice(e.target.value)}
           className="border p-2 w-full rounded-lg mb-4"
           placeholder="Enter new price"
         />
@@ -271,7 +272,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           min="1"
           placeholder="Quantity"
           value={restockQuantity}
-          onChange={e => setRestockQuantity(e.target.value)} // Capture input change
+          onChange={(e) => setRestockQuantity(e.target.value)} // Capture input change
           className="w-full p-2 border border-gray-300 rounded-md mt-2"
           id="restock-quantity"
         />

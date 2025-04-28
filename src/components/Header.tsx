@@ -11,6 +11,7 @@ import { FiLogOut } from "react-icons/fi";
 import Cart from "./Cart";
 import { jwtDecode } from "jwt-decode";
 import lg from "../assets/images/em.png";
+import { PiShoppingCartFill } from "react-icons/pi";
 
 interface User {
   username: string;
@@ -103,7 +104,8 @@ const Header: React.FC = () => {
                 }}
                 className="flex items-center gap-2 text-lg hover:bg-gray-600 p-2 rounded-md"
               >
-                🛒 Cart
+                <PiShoppingCartFill />
+                Cart
               </button>
             </li>
             <li>
