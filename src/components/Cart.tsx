@@ -776,7 +776,21 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
                   <div className="flex items-center gap-2 mt-2">
                     <button
-                      onClick={() => updateQuantity(item._id, false)}
+                      onClick={() => {
+                        if (item.quantity > 1) {
+                          // Check if quantity is greater than 1
+                          updateQuantity(item._id, false);
+                          setQuantityInputs((prev) => ({
+                            ...prev,
+                            [item._id]: Math.max(
+                              1,
+                              parseInt(
+                                prev[item._id] || item.quantity.toString()
+                              ) - 1
+                            ).toString(), // Use Math.max to prevent going below 1
+                          }));
+                        }
+                      }}
                       className="px-3 py-1 bg-gray-200 rounded-md hover:bg-gray-300 text-gray-800 font-bold"
                     >
                       -
@@ -796,7 +810,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     />
 
                     <button
-                      onClick={() => updateQuantity(item._id, true)}
+                      onClick={() => {
+                        updateQuantity(item._id, true);
+                        setQuantityInputs((prev) => ({
+                          ...prev,
+                          [item._id]: (
+                            parseInt(
+                              prev[item._id] || item.quantity.toString()
+                            ) + 1
+                          ).toString(),
+                        }));
+                      }}
                       className="px-3 py-1 bg-gray-200 rounded-md hover:bg-gray-300 text-gray-800 font-bold"
                     >
                       +
