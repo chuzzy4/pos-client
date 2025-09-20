@@ -806,7 +806,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       }
                       onBlur={() => handleQuantityInputBlur(item._id)}
                       onKeyDown={(e) => handleQuantityInputKeyDown(e, item._id)}
-                      className="w-16 text-center border rounded-md py-1 px-2 text-lg font-semibold"
+                      className="w-16 text-center border rounded-md py-1 px-2 text-lg font-semibold text-black"
                     />
 
                     <button
